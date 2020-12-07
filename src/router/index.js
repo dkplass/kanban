@@ -1,28 +1,88 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(Router)
 
-const routes = [
+import Layout from '@/layout'
+
+export const constantRoutes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: {
+          title: 'Dashboard',
+          icon: 'grid'
+        }
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: '/loop',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Loop',
+        component: () => import('@/views/loop/index'),
+        meta: {
+          title: 'Loop_Status',
+          icon: 'bounding-box-circles'
+        }
+      }
+    ]
+  },
+  {
+    path: '/node',
+    component: Layout,
+    redirect: '/node/index',
+    name: 'node',
+    meta: {
+      title: 'Node',
+      icon: 'diagram-2'
+    },
+    children: [
+      {
+        path: 'timespan',
+        name: 'NodesTimespan',
+        component: () => import('@/views/node/nodes-timespan'),
+        meta: {
+          title: 'Node_Timespan_Information'
+        }
+      },
+      {
+        path: 'balance',
+        name: 'NodesBalance',
+        component: () => import('@/views/node/nodes-balance'),
+        meta: {
+          title: 'Node_Balance'
+        }
+      }
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/dashboard',
+    hidden: true
   }
-];
+]
 
-const router = new VueRouter({
-  routes
-});
+const createRouter = () => new Router({
+  mode: 'history',
+  base: '/kanban/',
+  routes: constantRoutes
+})
 
-export default router;
+const router = createRouter()
+
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+export default router

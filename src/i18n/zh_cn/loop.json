@@ -1,0 +1,13 @@
+{
+  "AsNo": "派工单号",
+  "Enter_AsNo": "请输入派工单号",
+  "LoopNum": "回路编号",
+  "Select_LoopNum": "请选择回路编号",
+  "None_LoopNum": "此单号无回路编号",
+  "Begin_Node": "起始报工点",
+  "End_Node": "終點報工點",
+  "Select_Node": "请选择报工点",
+  "Timespan": "时间区段",
+  "Select_Timespan": "请选择时间区段",
+  "Query": "查询"
+}

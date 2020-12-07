@@ -1,0 +1,10 @@
+{
+  "AsNo": "派工單號",
+  "Enter_AsNo": "請輸入派工單號",
+  "LoopNum": "迴路編號",
+  "Select_LoopNum": "請選擇迴路編號",
+  "None_LoopNum": "此單號無迴路編號",
+  "Timespan": "時間區段",
+  "Select_Timespan": "請選擇時間區段",
+  "Query": "查詢"
+}

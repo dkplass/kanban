@@ -1,0 +1,10 @@
+{
+  "AsNo": "Assemble Number",
+  "Enter_AsNo": "Please enter Assemble Number",
+  "LoopNum": "Loop Number",
+  "Select_LoopNum": "Please select Loop Number",
+  "None_LoopNum": "No loop number found",
+  "Timespan": "Timespan",
+  "Select_Timespan": "Please select timespan",
+  "Query": "Query"
+}
