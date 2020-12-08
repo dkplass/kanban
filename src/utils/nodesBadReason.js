@@ -43,7 +43,7 @@ export function NodesBadReason(data) {
   // })
 
   // 整理出以不良原因為一組的dataset
-  result.datasets[0].data = _data.map(element => element.OutputQty)
+  result.datasets[0].data = _data.map(element => element.Qty)
 
   // reasonList.forEach(element => {
   //   const sumQty = _data.reduce((accumulator, currentValue) => {
@@ -52,8 +52,6 @@ export function NodesBadReason(data) {
 
   //   result.datasets[0].data.push(sumQty)
   // })
-
-  console.log(result)
 
   return result
 }

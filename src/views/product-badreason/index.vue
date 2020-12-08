@@ -14,7 +14,7 @@ import { GetBadReasons } from '@/api/BadReason'
 import { NodesBadReason } from '@/utils/nodesBadReason'
 
 export default {
-  name: 'NodesBadReason',
+  name: 'ProductBadReason',
   components: {
     NodesQueryBase,
     BadReason

@@ -17,7 +17,7 @@ function switchLanguage() {
   if (lang) {
     res = lang
   } else {
-    res = 'en'
+    res = 'zh_tw'
   }
 
   store.dispatch('app/switchLanguage', lang)

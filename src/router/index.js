@@ -62,13 +62,20 @@ export const constantRoutes = [
         meta: {
           title: 'Node_Balance'
         }
-      },
+      }
+    ]
+  },
+  {
+    path: '/bad-reason',
+    component: Layout,
+    children: [
       {
-        path: 'badreason',
+        path: 'index',
         name: 'BadReason',
-        component: () => import('@/views/node/nodes-badreason'),
+        component: () => import('@/views/product-badreason/index'),
         meta: {
-          title: 'Node_Badreason'
+          title: 'Product_Badreason',
+          icon: 'exclamation-triangle-fill'
         }
       }
     ]

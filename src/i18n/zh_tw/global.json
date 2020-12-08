@@ -5,5 +5,6 @@
   "Node": "報工點",
   "Node_Timespan_Information": "報工點時間區間資訊",
   "Node_Balance": "報工點平衡",
-  "Node_Badreason": "報工點不良原因"
+  "Node_Badreason": "報工點不良原因",
+  "Product_Badreason": "產品不良原因"
 }
