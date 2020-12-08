@@ -10,6 +10,7 @@ import clickOutside from '@/directives/click-outside.js'
 
 import VCalendar from 'v-calendar'
 import i18n from './i18n'
+import VueMoment from 'vue-moment'
 
 import App from './App.vue'
 import router from './router'
@@ -20,6 +21,7 @@ import './permission'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VCalendar)
+Vue.use(VueMoment)
 
 Vue.directive('click-outside', clickOutside)
 

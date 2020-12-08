@@ -80,15 +80,15 @@ export default {
   data() {
     return {
       range: {
-        start: new Date(),
-        end: new Date()
+        start: this.$moment().format('YYYY/MM/DD HH:mm:ss'),
+        end: this.$moment().format('YYYY/MM/DD HH:mm:ss')
       },
       masks: {
-        input: 'YYYY/MM/DD h:mm A'
+        input: 'YYYY/MM/DD HH:mm:ss'
       },
       modelConfig: {
         type: 'string',
-        mask: 'YYYY/MM/DD hh:mm:ss'
+        mask: 'YYYY/MM/DD HH:mm:ss'
       }
     }
   },
@@ -123,6 +123,9 @@ export default {
 
       return res
     }
+  },
+  created() {
+    this.onDateRangeChange(this.range)
   },
   methods: {
     onDateRangeChange(e) {
