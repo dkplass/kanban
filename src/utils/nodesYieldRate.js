@@ -1,19 +1,4 @@
-export function nodeYieldRateToPieChart(data, endWorkNode) {
-  /*
-  [
-    {
-      node: '',
-      chartData: {
-        labels: ['良率', '不良率'],
-        datasets: [{
-          backgroundColor: [],
-          data: []
-        }]
-      }
-    }
-  ]
-  */
-
+export function NodesYieldRate(data, endWorkNode) {
   let _data = data
   const _endWorkNode = endWorkNode
   let result = []
@@ -35,8 +20,13 @@ export function nodeYieldRateToPieChart(data, endWorkNode) {
       }
     }
 
-    const goodRate = ((element.OutputQty - element.BadQty) * 100) / element.OutputQty || 0
-    const badRate = 100 - goodRate
+    let goodRate = ((element.OutputQty - element.BadQty) * 100) / element.OutputQty || 0
+    let badRate = 100 - goodRate
+
+    if (element.OutputQty === 0 && element.BadQty === 0) {
+      goodRate = 100
+      badRate = 0
+    }
 
     set.chartData.labels = ['良率', '不良率']
     set.chartData.datasets[0] = {
@@ -46,8 +36,6 @@ export function nodeYieldRateToPieChart(data, endWorkNode) {
 
     return set
   })
-
-  console.log(result)
 
   return result
 }

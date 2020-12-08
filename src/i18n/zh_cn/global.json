@@ -4,5 +4,6 @@
   "Loop_Status": "回路生产状态",
   "Node": "报工点",
   "Node_Timespan_Information": "报工点时间区间资讯",
-  "Node_Balance": "报工点平衡"
+  "Node_Balance": "报工点平衡",
+  "Node_Badreason": "Node bad reason"
 }

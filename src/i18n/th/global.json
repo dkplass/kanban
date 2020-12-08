@@ -4,5 +4,6 @@
   "Loop_Status": "Loop Status",
   "Node": "Node",
   "Node_Timespan_Information": "Node's timespan information",
-  "Node_Balance": "Node Balance"
+  "Node_Balance": "Node Balance",
+  "Node_Badreason": "Node bad reason"
 }

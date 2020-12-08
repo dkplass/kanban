@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <b-card class="app-card mb-4">
-      <b-row class="mt-1 mb-2">
+      <b-row class="mb-2">
         <b-col cols="12" sm="6">
           <b-input-group size="md" :prepend="$t('loop.AsNo')">
             <b-form-input v-model="query.asNo" @blur="handleGetLoopList" @keyup.enter="$event.target.blur()" />
@@ -16,7 +16,7 @@
           </b-input-group>
         </b-col>
       </b-row>
-      <b-row class="mt-2 mb-1">
+      <b-row class="mb-2">
         <b-col cols="12" sm="6">
           <b-input-group size="md" :prepend="$t('loop.Begin_Node')">
             <b-form-select v-model="WorkNodesFilters.bWorkNodeNo" :options="workNodeListOptions" />
@@ -28,9 +28,7 @@
           </b-input-group>
         </b-col>
       </b-row>
-    </b-card>
-    <b-card class="app-card">
-      <b-row>
+      <b-row class="mb-2">
         <b-col cols="12" sm="6">
           <b-input-group size="md" :prepend="$t('loop.Timespan')">
             <b-form-select v-model="selectedTimeTable" :options="timeTablesList" />
@@ -40,7 +38,13 @@
           <DateTimeRange @handleDateRange="handleDateRange" />
         </b-col>
       </b-row>
-      <b-button @click="handleGetLoopProgressRate">{{ $t('loop.Query') }}</b-button>
+      <b-row class="mb-2">
+        <b-col class="text-center">
+          <b-button @click="handleGetLoopProgressRate">{{ $t('loop.Query') }}</b-button>
+        </b-col>
+      </b-row>
+    </b-card>
+    <b-card class="app-card">
       <!-- {{ loopDetailData }} -->
       <LineChartComponent :data="loopProgressRate" />
     </b-card>

@@ -1,23 +1,22 @@
 <template>
   <div class="app-container">
     <NodesQueryBase @handleQuery="handleQuery" />
-    <b-card class="app-card">
-      <Balance :data="nodesOutput" />
+    <b-card class="app-card mb-4">
+      <BadReason />
     </b-card>
   </div>
 </template>
 
 <script>
-import { GetLoopProgressRate } from '@/api/ProgressRate'
-import { NodesOutput } from '@/utils/nodesOutput'
 import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue'
-import Balance from '@/components/charts/LineChart/Balance.vue'
+import BadReason from '@/components/charts/BarChart/BadReason.vue'
+import { GetLoopProgressRate } from '@/api/ProgressRate'
 
 export default {
-  name: 'NodesBalance',
+  name: 'NodesBadReason',
   components: {
     NodesQueryBase,
-    Balance
+    BadReason
   },
   data() {
     return {
@@ -34,12 +33,6 @@ export default {
       loopData: []
     }
   },
-  computed: {
-    nodesOutput() {
-      const result = NodesOutput(this.loopData)
-      return result
-    }
-  },
   methods: {
     async handleQuery(query) {
       this.query = query
@@ -53,13 +46,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.option-loading {
-  flex: 1 1 auto;
-  width: 1%;
-  vertical-align: center;
-  border: 1px solid #ced4da;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 </style>

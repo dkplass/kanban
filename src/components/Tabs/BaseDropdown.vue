@@ -1,5 +1,10 @@
 <template>
-  <component :is="tag" v-b-toggle:my-collapse class="position-relative" v-bind="linkProps(hrefStr)">
+  <component
+    :is="tag"
+    v-b-toggle:my-collapse
+    class="position-relative"
+    v-bind="linkProps(hrefStr)"
+  >
     <slot name="title-container" />
     <b-collapse id="my-collapse">
       <slot />
@@ -26,6 +31,10 @@ export default {
     hrefStr: {
       type: String,
       default: '#'
+    },
+    direction: {
+      type: String,
+      default: ''
     }
   },
   data() {

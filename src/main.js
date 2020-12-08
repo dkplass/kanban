@@ -5,6 +5,9 @@ import 'normalize.css/normalize.css'
 import '@/assets/styles/element-variables.scss'
 import '@/assets/styles/index.scss' // global css
 
+// directives
+import clickOutside from '@/directives/click-outside.js'
+
 import VCalendar from 'v-calendar'
 import i18n from './i18n'
 
@@ -17,6 +20,8 @@ import './permission'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(VCalendar)
+
+Vue.directive('click-outside', clickOutside)
 
 Vue.config.productionTip = false
 

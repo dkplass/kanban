@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!item.hidden">
+  <div v-if="!item.hidden" v-click-outside="closeFloatPanel">
     <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)&&!item.alwaysShow">
       <AppLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <b-list-group-item class="menu-item" :class="{'submenu-title-noDropdown':!isNest}">
@@ -8,22 +8,37 @@
         </b-list-group-item>
       </AppLink>
     </template>
-    <BaseDropdown v-else tag="div" title-tag="b-list-group-item">
-      <template slot="title-container">
-        <b-list-group-item class="menu-item">
+    <template v-else>
+      <BaseDropdown v-if="!isCollapse" tag="div" title-tag="b-list-group-item">
+        <template slot="title-container">
+          <b-list-group-item class="menu-item">
+            <b-icon class="item-icon" :icon="item.meta.icon" />
+            <span>{{ $t(`global.${item.meta.title}`) }}</span>
+            <b-icon class="collapse-btn" icon="caret-down-fill" />
+          </b-list-group-item>
+        </template>
+        <SidebarItem
+          v-for="child in item.children"
+          :key="child.path"
+          :is-nest="true"
+          :item="child"
+          :base-path="resolvePath(child.path)"
+        />
+      </BaseDropdown>
+      <template v-else>
+        <b-list-group-item class="menu-item" @click="toggleFloatPanel">
           <b-icon class="item-icon" :icon="item.meta.icon" />
           <span>{{ $t(`global.${item.meta.title}`) }}</span>
-          <b-icon class="collapse-btn" icon="caret-down-fill" />
         </b-list-group-item>
+        <div v-show="active" class="float-panel">
+          <AppLink v-for="child in item.children" :key="child.path" :to="resolvePath(child.path)">
+            <b-list-group-item class="float-panel-item" @click="toggleFloatPanel">
+              <span>{{ $t(`global.${child.meta.title}`) }}</span>
+            </b-list-group-item>
+          </AppLink>
+        </div>
       </template>
-      <SidebarItem
-        v-for="child in item.children"
-        :key="child.path"
-        :is-nest="true"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-      />
-    </BaseDropdown>
+    </template>
   </div>
 </template>
 
@@ -50,11 +65,16 @@ export default {
     basePath: {
       type: String,
       default: ''
+    },
+    isCollapse: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     this.onlyOneChild = null
     return {
+      active: false
     }
   },
   methods: {
@@ -82,6 +102,14 @@ export default {
     },
     resolvePath(routePath) {
       return path.resolve(this.basePath, routePath)
+    },
+    toggleFloatPanel() {
+      if (!this.isCollapse) return
+
+      this.active = !this.active
+    },
+    closeFloatPanel() {
+      this.active = false
     }
   }
 }
@@ -92,5 +120,29 @@ export default {
   float: right;
   height: 100%;
   vertical-align: middle;
+}
+
+.float-panel {
+  position: absolute;
+  top: 1%;
+  left: 58px;
+  height: 98%;
+  background-color: #1f2d3d;
+  z-index: 9999;
+
+  .float-panel-item {
+    height: 56px;
+    line-height: 56px;
+    font-size: 14px;
+    color: #bfcbd9;
+    padding: 0 20px;
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+    box-sizing: border-box;
+    white-space: nowrap;
+    background-color: #1f2d3d !important;
+  }
 }
 </style>

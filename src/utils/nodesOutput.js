@@ -16,7 +16,7 @@ function containsObject(obj, list) {
  * @return {object}
  */
 
-export function nodesOutputToLineChart(data) {
+export function NodesOutput(data) {
   const result = {
     labels: [],
     datasets: []
@@ -81,7 +81,6 @@ export function nodesOutputToLineChart(data) {
   if (result.datasets.length > 0) {
     result.datasets.forEach((dataset, index) => {
       const color = storeColor[index] || 'rgba(255, 255, 255, 1)'
-      console.log(color)
       dataset.borderColor = color
       dataset.strokeColor = color
       dataset.pointBackgroundColor = color

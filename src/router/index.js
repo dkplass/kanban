@@ -62,6 +62,14 @@ export const constantRoutes = [
         meta: {
           title: 'Node_Balance'
         }
+      },
+      {
+        path: 'badreason',
+        name: 'BadReason',
+        component: () => import('@/views/node/nodes-badreason'),
+        meta: {
+          title: 'Node_Badreason'
+        }
       }
     ]
   },

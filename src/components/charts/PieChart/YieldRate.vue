@@ -82,18 +82,6 @@ export default {
   methods: {
     fillData() {
       this.datacollection = this.data
-    },
-    getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-    },
-    generateSet(s) {
-      const set = []
-
-      for (let i = 0; i < s; i++) {
-        set[i] = this.getRandomInt()
-      }
-
-      return set
     }
   }
 }
