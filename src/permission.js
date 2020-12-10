@@ -13,7 +13,24 @@ router.beforeEach(async(to, from, next) => {
   // dynamically add accessible routes
   // router.addRoutes(accessRoutes)
 
-  const language = to.query.language || '';
+  let language = to.query.language || '';
+
+  switch (language) {
+    case '01':
+      language = 'zh_tw';
+      break;
+    case '02':
+      language = 'en';
+      break;
+    case '03':
+      language = 'vi';
+      break;
+    case '04':
+      language = 'th';
+      break;
+    default:
+      language = '';
+  }
 
   loadLocaleAsync(language).then(() => next());
 
