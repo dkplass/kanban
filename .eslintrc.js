@@ -137,9 +137,6 @@ module.exports = {
     'no-undef-init': 2,
     'no-unexpected-multiline': 2,
     'no-unmodified-loop-condition': 2,
-    'no-unneeded-ternary': [2, {
-      'defaultAssignment': false
-    }],
     'no-unreachable': 2,
     'no-unsafe-finally': 2,
     'no-unused-vars': [2, {
@@ -166,7 +163,7 @@ module.exports = {
       'avoidEscape': true,
       'allowTemplateLiterals': true
     }],
-    'semi': [2, 'never'],
+    'semi': [2, 'always'],
     'semi-spacing': [2, {
       'before': false,
       'after': true

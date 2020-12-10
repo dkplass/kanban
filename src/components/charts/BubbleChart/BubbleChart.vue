@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BubbleChart from '@/components/charts/BubbleChart/BubbleChart.js'
+import BubbleChart from '@/components/charts/BubbleChart/BubbleChart.js';
 
 export default {
   name: 'BubbleChart',
@@ -22,10 +22,10 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
-    }
+    };
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
@@ -42,24 +42,24 @@ export default {
             data: this.generateSet(3)
           }
         ]
-      }
+      };
     },
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     },
     generateSet(s) {
-      const set = []
+      const set = [];
 
       for (let i = 0; i < s; i++) {
         set[i] = {
           x: this.getRandomInt(),
           y: this.getRandomInt(),
           r: this.getRandomInt()
-        }
+        };
       }
 
-      return set
+      return set;
     }
   }
-}
+};
 </script>

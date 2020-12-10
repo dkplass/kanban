@@ -1,35 +1,35 @@
-import '@babel/polyfill'
-import Vue from 'vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'normalize.css/normalize.css'
-import '@/assets/styles/element-variables.scss'
-import '@/assets/styles/index.scss' // global css
+import '@babel/polyfill';
+import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'normalize.css/normalize.css';
+import '@/assets/styles/element-variables.scss';
+import '@/assets/styles/index.scss'; // global css
 
 // directives
-import clickOutside from '@/directives/click-outside.js'
+import clickOutside from '@/directives/click-outside.js';
 
-import VCalendar from 'v-calendar'
-import i18n from './i18n'
-import VueMoment from 'vue-moment'
+import VCalendar from 'v-calendar';
+import { i18n } from './i18n';
+import VueMoment from 'vue-moment';
 
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from './App.vue';
+import router from './router';
+import store from './store';
 
-import './permission'
+import './permission';
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
-Vue.use(VCalendar)
-Vue.use(VueMoment)
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(VCalendar);
+Vue.use(VueMoment);
 
-Vue.directive('click-outside', clickOutside)
+Vue.directive('click-outside', clickOutside);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 export const app = new Vue({
   i18n,
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');

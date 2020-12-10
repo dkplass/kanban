@@ -8,7 +8,7 @@
 export default {
   name: 'App',
   created() {
-    this.$store.dispatch('permission/generateRoutes', 'admin')
+    this.$store.dispatch('permission/generateRoutes', 'admin');
   }
-}
+};
 </script>

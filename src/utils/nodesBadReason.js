@@ -4,7 +4,7 @@
  * @return {object}
  */
 export function NodesBadReason(data) {
-  console.log(data)
+  console.log(data);
 
   /**
     {
@@ -28,12 +28,12 @@ export function NodesBadReason(data) {
         data: []
       }
     ]
-  }
+  };
 
-  const _data = JSON.parse(JSON.stringify(data))
+  const _data = JSON.parse(JSON.stringify(data));
 
   // X軸資料為不良原因
-  result.labels = _data.map(element => element.BadReasonName)
+  result.labels = _data.map(element => element.BadReasonName);
   // _data.forEach(element => {
   //   const found = reasonList.find(reason => reason === element.BadReasonName)
 
@@ -43,7 +43,7 @@ export function NodesBadReason(data) {
   // })
 
   // 整理出以不良原因為一組的dataset
-  result.datasets[0].data = _data.map(element => element.Qty)
+  result.datasets[0].data = _data.map(element => element.Qty);
 
   // reasonList.forEach(element => {
   //   const sumQty = _data.reduce((accumulator, currentValue) => {
@@ -53,5 +53,5 @@ export function NodesBadReason(data) {
   //   result.datasets[0].data.push(sumQty)
   // })
 
-  return result
+  return result;
 }

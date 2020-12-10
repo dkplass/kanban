@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import { Sidebar, AppMain, Navbar } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
+import { Sidebar, AppMain, Navbar } from './components';
+import ResizeMixin from './mixin/ResizeHandler';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Layout',
@@ -35,15 +35,15 @@ export default {
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
         mobile: this.device === 'mobile'
-      }
+      };
     }
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

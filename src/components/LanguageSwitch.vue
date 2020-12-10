@@ -5,34 +5,34 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'LanguageSwitch',
   data() {
     return {
       displayLanguage: this.language
-    }
+    };
   },
   computed: {
     ...mapGetters([
       'language'
     ]),
     languages() {
-      const list = ['en', 'vi', 'zh_cn', 'zh_tw', 'th']
+      const list = ['en', 'vi', 'zh_cn', 'zh_tw', 'th'];
 
-      return list
+      return list;
     }
   },
   methods: {
     setLang(lang) {
-      this.displayLanguage = lang
-      this.$store.dispatch('app/switchLanguage', lang)
-      this.$i18n.locale = lang
-      localStorage.setItem('language', lang)
+      this.displayLanguage = lang;
+      this.$store.dispatch('app/switchLanguage', lang);
+      this.$i18n.locale = lang;
+      localStorage.setItem('language', lang);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

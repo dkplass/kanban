@@ -34,10 +34,10 @@
 </template>
 
 <script>
-import { GetLoopLastWorkNode } from '@/api/ProgressRate'
-import { GetLoop } from '@/api/SelectData'
-import DateTimeRange from '@/components/DateTimeRange'
-import { mapGetters } from 'vuex'
+import { GetLoopLastWorkNode } from '@/api/ProgressRate';
+import { GetLoop } from '@/api/SelectData';
+import DateTimeRange from '@/components/DateTimeRange';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'NodesQueryBase',
@@ -61,7 +61,7 @@ export default {
         start: '',
         end: ''
       }
-    }
+    };
   },
   computed: {
     ...mapGetters([
@@ -69,14 +69,14 @@ export default {
       'language'
     ]),
     loopListOptions() {
-      const list = this.loopList
-      let options = []
+      const list = this.loopList;
+      let options = [];
 
       if (!this.query.asNo) {
         return [{
           value: '',
           text: this.$t('node.Enter_AsNo')
-        }]
+        }];
       }
 
       if (this.loopList.length > 0) {
@@ -84,58 +84,58 @@ export default {
           return {
             value: item.LoopNum,
             text: `${this.$t('node.LoopNum')}${item.LoopNum}`
-          }
-        })
+          };
+        });
 
         options = [{
           value: '',
           text: this.$t('node.Select_LoopNum')
-        }, ..._list]
+        }, ..._list];
       } else {
         options = [{
           value: '',
           text: this.$t('node.None_LoopNum')
-        }]
+        }];
       }
 
-      return options
+      return options;
     },
     timeTablesList() {
       const list = this.time_tables.map(item => {
         return {
           value: item.TimeTableNo,
           text: item.TimeTableNo
-        }
-      })
+        };
+      });
 
-      return [{ value: '', text: this.$t('node.Select_Timespan') }, ...list]
+      return [{ value: '', text: this.$t('node.Select_Timespan') }, ...list];
     },
     LangNo() {
-      const language = this.language
-      let res = ''
+      const language = this.language;
+      let res = '';
 
       switch (language) {
         case 'en':
-          res = '02'
-          break
+          res = '02';
+          break;
         case 'vi':
-          res = '03'
-          break
+          res = '03';
+          break;
         case 'th':
-          res = '04'
-          break
+          res = '04';
+          break;
         case 'zh_cn':
-          res = '01'
-          break
+          res = '01';
+          break;
         case 'zh_tw':
-          res = '01'
-          break
+          res = '01';
+          break;
         default:
-          res = '01'
-          break
+          res = '01';
+          break;
       }
 
-      return res
+      return res;
     }
   },
   watch: {
@@ -145,10 +145,10 @@ export default {
           comNo: this.query.comNo,
           asNo: this.query.asNo,
           loopNum: this.selectedLoop
-        }
+        };
 
         if (workNodeQuery.asNo !== '' && workNodeQuery.loopNum !== '') {
-          this.getLoopLastWorkNode(workNodeQuery)
+          this.getLoopLastWorkNode(workNodeQuery);
         }
       },
       deep: true
@@ -158,35 +158,35 @@ export default {
         comNo: this.query.comNo,
         asNo: this.query.asNo,
         loopNum: this.selectedLoop
-      }
+      };
 
       if (workNodeQuery.asNo !== '' && workNodeQuery.loopNum !== '') {
-        this.getLoopLastWorkNode(workNodeQuery)
+        this.getLoopLastWorkNode(workNodeQuery);
       }
     }
   },
   created() {
-    this.$store.dispatch('selectData/getTimeTables')
+    this.$store.dispatch('selectData/getTimeTables');
   },
   methods: {
     async handleGetLoopList() {
-      const data = JSON.stringify(this.query)
+      const data = JSON.stringify(this.query);
 
-      this.selectedLoop = ''
-      this.fetchingLoop = true
+      this.selectedLoop = '';
+      this.fetchingLoop = true;
 
       const result = await GetLoop(data).then(response => response).catch(error => {
         this.$bvToast.toast(`${error}`, {
           title: 'Error Message'
-        })
-      })
+        });
+      });
 
-      this.loopList = result
+      this.loopList = result;
 
-      this.fetchingLoop = false
+      this.fetchingLoop = false;
     },
     handleDateRange(value) {
-      this.dateRange = value
+      this.dateRange = value;
     },
     handleQuery() {
       this.$emit('handleQuery', {
@@ -197,15 +197,15 @@ export default {
         EndDateTime: this.dateRange.end,
         TimeTableNo: this.selectedTimeTable,
         LangNo: this.LangNo
-      })
+      });
     },
     getLoopLastWorkNode(query) {
       GetLoopLastWorkNode(JSON.stringify(query)).then(response => {
-        this.$emit('refreshLoopLastWorkNode', response)
-      })
+        this.$emit('refreshLoopLastWorkNode', response);
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

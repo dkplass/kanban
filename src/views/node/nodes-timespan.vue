@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import { GetLoopProgressRate } from '@/api/ProgressRate'
-import { NodesYieldRate } from '@/utils/nodesYieldRate'
-import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue'
-import YieldRate from '@/components/charts/PieChart/YieldRate.vue'
+import { GetLoopProgressRate } from '@/api/ProgressRate';
+import { NodesYieldRate } from '@/utils/nodesYieldRate';
+import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue';
+import YieldRate from '@/components/charts/PieChart/YieldRate.vue';
 // eslint-disable-next-line no-unused-vars
-import ChartDataLabels from 'chartjs-plugin-datalabels'
-import { mapGetters } from 'vuex'
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'NodesTimespan',
@@ -41,31 +41,31 @@ export default {
       loopData: [],
 
       endWorkNodeNo: ''
-    }
+    };
   },
   computed: {
     ...mapGetters([
       'work_node'
     ]),
     nodesYieldRate() {
-      const result = NodesYieldRate(this.loopData, this.endWorkNodeNo)
+      const result = NodesYieldRate(this.loopData, this.endWorkNodeNo);
 
-      return result
+      return result;
     }
   },
   methods: {
     async handleQuery(query) {
-      this.query = query
+      this.query = query;
 
-      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response)
+      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response);
 
-      this.loopData = _loopDetailData
+      this.loopData = _loopDetailData;
     },
     refreshLoopLastWorkNode(value) {
-      this.endWorkNodeNo = value
+      this.endWorkNodeNo = value;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

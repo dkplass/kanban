@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LineChart from '@/components/charts/LineChart/LineChart.js'
+import LineChart from '@/components/charts/LineChart/LineChart.js';
 
 export default {
   name: 'Balance',
@@ -22,7 +22,7 @@ export default {
         return {
           labels: [],
           datasets: []
-        }
+        };
       }
     }
   },
@@ -46,25 +46,25 @@ export default {
           yPadding: 10
         }
       }
-    }
+    };
   },
   watch: {
     data: {
       handler(value) {
-        this.fillData()
+        this.fillData();
       },
       deep: true
     }
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
-      this.datacollection = this.data
+      this.datacollection = this.data;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

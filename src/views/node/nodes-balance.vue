@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import { GetLoopProgressRate } from '@/api/ProgressRate'
-import { NodesOutput } from '@/utils/nodesOutput'
-import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue'
-import Balance from '@/components/charts/LineChart/Balance.vue'
+import { GetLoopProgressRate } from '@/api/ProgressRate';
+import { NodesOutput } from '@/utils/nodesOutput';
+import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue';
+import Balance from '@/components/charts/LineChart/Balance.vue';
 
 export default {
   name: 'NodesBalance',
@@ -32,24 +32,24 @@ export default {
       },
 
       loopData: []
-    }
+    };
   },
   computed: {
     nodesOutput() {
-      const result = NodesOutput(this.loopData)
-      return result
+      const result = NodesOutput(this.loopData);
+      return result;
     }
   },
   methods: {
     async handleQuery(query) {
-      this.query = query
+      this.query = query;
 
-      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response)
+      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response);
 
-      this.loopData = _loopDetailData
+      this.loopData = _loopDetailData;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

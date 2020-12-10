@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import PolarAreaChart from '@/components/charts/PolarAreaChart/PolarAreaChart.js'
+import PolarAreaChart from '@/components/charts/PolarAreaChart/PolarAreaChart.js';
 
 export default {
   name: 'PolarAreaChart',
@@ -22,10 +22,10 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
-    }
+    };
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
@@ -51,20 +51,20 @@ export default {
             data: this.generateSet(7)
           }
         ]
-      }
+      };
     },
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     },
     generateSet(s) {
-      const set = []
+      const set = [];
 
       for (let i = 0; i < s; i++) {
-        set[i] = this.getRandomInt()
+        set[i] = this.getRandomInt();
       }
 
-      return set
+      return set;
     }
   }
-}
+};
 </script>

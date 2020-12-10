@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue'
-import BadReason from '@/components/charts/BarChart/BadReason.vue'
-import { GetBadReasons } from '@/api/BadReason'
-import { NodesBadReason } from '@/utils/nodesBadReason'
+import NodesQueryBase from '@/components/Inputs/NodesQuery/Base.vue';
+import BadReason from '@/components/charts/BarChart/BadReason.vue';
+import { GetBadReasons } from '@/api/BadReason';
+import { NodesBadReason } from '@/utils/nodesBadReason';
 
 export default {
   name: 'ProductBadReason',
@@ -32,24 +32,24 @@ export default {
       },
 
       loopData: []
-    }
+    };
   },
   computed: {
     nodesBadReason() {
-      const result = NodesBadReason(this.loopData)
-      return result
+      const result = NodesBadReason(this.loopData);
+      return result;
     }
   },
   methods: {
     async handleQuery(query) {
-      this.query = query
+      this.query = query;
 
-      const _loopDetailData = await GetBadReasons(JSON.stringify(query)).then(response => response)
+      const _loopDetailData = await GetBadReasons(JSON.stringify(query)).then(response => response);
 
-      this.loopData = _loopDetailData
+      this.loopData = _loopDetailData;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

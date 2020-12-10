@@ -3,23 +3,23 @@
 const state = {
   LoopFisrtWorkNode: '',
   LoopLastWorkNode: ''
-}
+};
 
 const mutations = {
   SET_LoopFisrtWorkNode: (state, LoopFisrtWorkNode) => {
-    state.LoopFisrtWorkNode = LoopFisrtWorkNode
+    state.LoopFisrtWorkNode = LoopFisrtWorkNode;
   },
   SET_LoopLastWorkNode: (state, LoopLastWorkNode) => {
-    state.LoopLastWorkNode = LoopLastWorkNode
+    state.LoopLastWorkNode = LoopLastWorkNode;
   }
-}
+};
 
 const actions = {
-}
+};
 
 export default {
   namespaced: true,
   state,
   mutations,
   actions
-}
+};

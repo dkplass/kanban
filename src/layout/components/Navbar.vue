@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Breadcrumb from '@/components/Breadcrumb'
-import LanguageSwitch from '@/components/LanguageSwitch'
+import Breadcrumb from '@/components/Breadcrumb';
+import LanguageSwitch from '@/components/LanguageSwitch';
 
 export default {
   name: 'Navbar',
@@ -24,10 +24,10 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch('app/toggleSideBar');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

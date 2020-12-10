@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LineChart from '@/components/charts/LineChart/LineChart.js'
+import LineChart from '@/components/charts/LineChart/LineChart.js';
 
 export default {
   name: 'LineChartComponent',
@@ -22,7 +22,7 @@ export default {
         return {
           labels: [],
           datasets: []
-        }
+        };
       }
     }
   },
@@ -46,18 +46,18 @@ export default {
           yPadding: 10
         }
       }
-    }
+    };
   },
   watch: {
     data: {
       handler(value) {
-        this.fillData()
+        this.fillData();
       },
       deep: true
     }
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
@@ -75,13 +75,13 @@ export default {
       //     }
       //   ]
       // }
-      this.datacollection = this.data
+      this.datacollection = this.data;
     },
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

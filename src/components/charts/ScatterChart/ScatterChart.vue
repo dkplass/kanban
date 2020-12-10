@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ScatterChart from '@/components/charts/ScatterChart/ScatterChart.js'
+import ScatterChart from '@/components/charts/ScatterChart/ScatterChart.js';
 
 export default {
   name: 'ScatterChart',
@@ -22,10 +22,10 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
-    }
+    };
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
@@ -76,24 +76,24 @@ export default {
             }]
           }
         ]
-      }
+      };
     },
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     },
     generateSet(s) {
-      const set = []
+      const set = [];
 
       for (let i = 0; i < s; i++) {
         set[i] = {
           x: this.getRandomInt(),
           y: this.getRandomInt(),
           r: this.getRandomInt()
-        }
+        };
       }
 
-      return set
+      return set;
     }
   }
-}
+};
 </script>

@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 /**
  * @description 取得迴路中各點在時間段的狀態
@@ -9,5 +9,5 @@ export function GetBadReasons(data) {
     url: '/BadReason/GetBadReasons',
     method: 'post',
     data
-  })
+  });
 }

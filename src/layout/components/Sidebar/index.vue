@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Logo from './logo.vue'
-import SidebarItem from './SidebarItem'
-import { mapGetters } from 'vuex'
+import Logo from './logo.vue';
+import SidebarItem from './SidebarItem';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Sidebar',
@@ -28,8 +28,8 @@ export default {
       'sidebar'
     ]),
     isCollapse() {
-      return !this.sidebar.opened
+      return !this.sidebar.opened;
     }
   }
-}
+};
 </script>

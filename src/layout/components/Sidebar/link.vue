@@ -15,15 +15,15 @@ export default {
   },
   computed: {
     type() {
-      return 'router-link'
+      return 'router-link';
     }
   },
   methods: {
     linkProps(to) {
       return {
         to: to
-      }
+      };
     }
   }
-}
+};
 </script>

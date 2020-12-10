@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 /**
  * @description 取得該單號下所有的迴路編號
@@ -9,7 +9,7 @@ export function GetLoop(data) {
     url: '/SelectData/GetLoop',
     method: 'post',
     data
-  })
+  });
 }
 
 /**
@@ -21,7 +21,7 @@ export function GetWorkNode(data) {
     url: '/SelectData/GetWorkNode',
     method: 'post',
     data
-  })
+  });
 }
 
 /**
@@ -33,6 +33,6 @@ export function GetTimeTables(data) {
     url: '/SelectData/GetTimeTables',
     method: 'post',
     data
-  })
+  });
 }
 

@@ -11,10 +11,10 @@ export default {
   name: 'Main',
   computed: {
     key() {
-      return this.$route.path
+      return this.$route.path;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import BarChart from '@/components/charts/BarChart/BarChart.js'
+import BarChart from '@/components/charts/BarChart/BarChart.js';
 
 export default {
   name: 'BadReason',
@@ -19,7 +19,7 @@ export default {
         return {
           labels: [],
           datasets: []
-        }
+        };
       }
     }
   },
@@ -40,25 +40,25 @@ export default {
           }]
         }
       }
-    }
+    };
   },
   watch: {
     data: {
       handler(value) {
-        this.fillData()
+        this.fillData();
       },
       deep: true
     }
   },
   created() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
-      this.datacollection = this.data
+      this.datacollection = this.data;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

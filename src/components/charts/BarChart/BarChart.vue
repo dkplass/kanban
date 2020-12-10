@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BarChart from '@/components/charts/BarChart/BarChart.js'
+import BarChart from '@/components/charts/BarChart/BarChart.js';
 
 export default {
   name: 'BarChart',
@@ -22,10 +22,10 @@ export default {
         responsive: true,
         maintainAspectRatio: false
       }
-    }
+    };
   },
   mounted() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
@@ -38,13 +38,13 @@ export default {
             data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
           }
         ]
-      }
+      };
     },
     getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

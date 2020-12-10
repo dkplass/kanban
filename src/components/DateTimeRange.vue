@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'DateTimeRange',
@@ -90,49 +90,49 @@ export default {
         type: 'string',
         mask: 'YYYY/MM/DD HH:mm:ss'
       }
-    }
+    };
   },
   computed: {
     ...mapGetters([
       'language'
     ]),
     locale() {
-      const l = this.language
-      let res = ''
+      const l = this.language;
+      let res = '';
 
       switch (l) {
         case 'en':
-          res = 'en-US'
-          break
+          res = 'en-US';
+          break;
         case 'vi':
-          res = 'vi'
-          break
+          res = 'vi';
+          break;
         case 'th':
-          res = 'th'
-          break
+          res = 'th';
+          break;
         case 'zh_cn':
-          res = 'zh-CN'
-          break
+          res = 'zh-CN';
+          break;
         case 'zh_tw':
-          res = 'zh-TW'
-          break
+          res = 'zh-TW';
+          break;
         default:
-          res = 'en-US'
-          break
+          res = 'en-US';
+          break;
       }
 
-      return res
+      return res;
     }
   },
   created() {
-    this.onDateRangeChange(this.range)
+    this.onDateRangeChange(this.range);
   },
   methods: {
     onDateRangeChange(e) {
-      this.$emit('handleDateRange', e)
+      this.$emit('handleDateRange', e);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

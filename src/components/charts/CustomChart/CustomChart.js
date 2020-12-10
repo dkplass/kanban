@@ -1,31 +1,31 @@
-import Chart from 'chart.js'
-import { generateChart } from 'vue-chartjs'
+import Chart from 'chart.js';
+import { generateChart } from 'vue-chartjs';
 
-Chart.defaults.LineWithLine = Chart.defaults.line
+Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
   draw: function(ease) {
-    Chart.controllers.line.prototype.draw.call(this, ease)
+    Chart.controllers.line.prototype.draw.call(this, ease);
 
     if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
-      const activePoint = this.chart.tooltip._active[0]
-      const ctx = this.chart.ctx
-      const x = activePoint.tooltipPosition().x
-      const topY = this.chart.scales['y-axis-0'].top
-      const bottomY = this.chart.scales['y-axis-0'].bottom
+      const activePoint = this.chart.tooltip._active[0];
+      const ctx = this.chart.ctx;
+      const x = activePoint.tooltipPosition().x;
+      const topY = this.chart.scales['y-axis-0'].top;
+      const bottomY = this.chart.scales['y-axis-0'].bottom;
 
-      ctx.save()
-      ctx.beginPath()
-      ctx.moveTo(x, topY)
-      ctx.lineTo(x, bottomY)
-      ctx.lineWidth = 2
-      ctx.strokeStyle = '#07C'
-      ctx.stroke()
-      ctx.restore()
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, topY);
+      ctx.lineTo(x, bottomY);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#07C';
+      ctx.stroke();
+      ctx.restore();
     }
   }
-})
+});
 
-const LineWithLine = generateChart('line-with-chart', 'LineWithLine')
+const LineWithLine = generateChart('line-with-chart', 'LineWithLine');
 
 export default {
   extends: LineWithLine,
@@ -45,6 +45,6 @@ export default {
       tooltips: {
         intersect: false
       }
-    })
+    });
   }
-}
+};

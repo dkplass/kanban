@@ -5,6 +5,6 @@ const getters = {
   permission_routes: state => state.permission.routes,
   time_tables: state => state.selectData.TimeTables,
   work_node: state => state.selectData.WorkNode
-}
+};
 
-export default getters
+export default getters;

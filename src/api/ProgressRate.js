@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 /**
  * @description 取得迴路中各點在時間段的狀態
@@ -9,7 +9,7 @@ export function GetLoopProgressRate(data) {
     url: '/ProgressRate/GetLoopProgressRate',
     method: 'post',
     data
-  })
+  });
 }
 
 /**
@@ -21,7 +21,7 @@ export function GetLoopFisrtWorkNode(data) {
     url: '/ProgressRate/GetLoopFisrtWorkNode',
     method: 'post',
     data
-  })
+  });
 }
 
 /**
@@ -33,7 +33,7 @@ export function GetLoopLastWorkNode(data) {
     url: '/ProgressRate/GetLoopLastWorkNode',
     method: 'post',
     data
-  })
+  });
 }
 
 /**
@@ -45,5 +45,5 @@ export function GetWorkNodesInterval(data) {
     url: '/ProgressRate/GetWorkNodesInterval',
     method: 'post',
     data
-  })
+  });
 }

@@ -1,18 +1,18 @@
-const jsonFiles = require.context('./en', true, /\.json$/)
+const jsonFiles = require.context('./en', true, /\.json$/);
 
 const jsons = jsonFiles.keys().reduce((jsons, jsonPath) => {
-  const json = jsonPath.replace(/^\.\/(.*)\.\w+$/, '$1')
-  let value
+  const json = jsonPath.replace(/^\.\/(.*)\.\w+$/, '$1');
+  let value;
 
   try {
-    value = jsonFiles(jsonPath) || {}
+    value = jsonFiles(jsonPath) || {};
   } catch {
-    value = {}
+    value = {};
   }
 
-  jsons[json] = value
+  jsons[json] = value;
 
-  return jsons
-}, {})
+  return jsons;
+}, {});
 
-export default jsons
+export default jsons;

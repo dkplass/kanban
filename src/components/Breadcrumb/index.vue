@@ -13,42 +13,42 @@ export default {
   data() {
     return {
       items: []
-    }
+    };
   },
   watch: {
     $route(route) {
-      this.getBreadcrumb()
+      this.getBreadcrumb();
     }
   },
   created() {
-    this.getBreadcrumb()
+    this.getBreadcrumb();
   },
   methods: {
     getBreadcrumb() {
-      let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
+      let matched = this.$route.matched.filter(item => item.meta && item.meta.title);
+      const first = matched[0];
 
       if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched);
       }
 
-      this.items = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+      this.items = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false);
 
       this.items.map(item => {
         // item.text = this.$t(`global.${item.meta.title}`)
-        item.text = item.meta.title
-        item.active = true
-      })
+        item.text = item.meta.title;
+        item.active = true;
+      });
     },
     isDashboard(route) {
-      const name = route && route.name
+      const name = route && route.name;
       if (!name) {
-        return false
+        return false;
       }
-      return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase()
+      return name.trim().toLocaleLowerCase() === 'Dashboard'.toLocaleLowerCase();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,13 @@
 function containsObject(obj, list) {
-  let x = 0
+  let x = 0;
 
   for (x = 0; x < list.length; x++) {
     if (JSON.stringify(list[x]) === JSON.stringify(obj)) {
-      return true
+      return true;
     }
   }
 
-  return false
+  return false;
 }
 
 /**
@@ -20,23 +20,23 @@ export function NodesOutput(data) {
   const result = {
     labels: [],
     datasets: []
-  }
+  };
 
-  const timespanList = []
+  const timespanList = [];
 
-  const _data = data
+  const _data = data;
 
   // X軸資料為間區隔
   _data.forEach(element => {
     const timeSpan = {
       BeginDateTime: element.BeginDateTime,
       EndDateTime: element.EndDateTime
-    }
+    };
     if (!containsObject(timeSpan, timespanList)) {
-      timespanList.push(timeSpan)
-      result.labels.push([timeSpan.BeginDateTime, '~', timeSpan.EndDateTime])
+      timespanList.push(timeSpan);
+      result.labels.push([timeSpan.BeginDateTime, '~', timeSpan.EndDateTime]);
     }
-  })
+  });
 
   // 整理出以WorkNodeNo為一組的dataset
   _data.forEach(element => {
@@ -44,28 +44,28 @@ export function NodesOutput(data) {
       label: '',
       fill: false,
       data: []
-    }
+    };
 
-    const exist = result.datasets.find(i => i.label === element.WorkNodeNo)
+    const exist = result.datasets.find(i => i.label === element.WorkNodeNo);
 
     if (!exist) {
-      dataSet.label = element.WorkNodeNo
+      dataSet.label = element.WorkNodeNo;
 
-      result.datasets.push(dataSet)
+      result.datasets.push(dataSet);
     }
-  })
+  });
 
   result.datasets.forEach(dataset => {
     timespanList.forEach(label => {
       _data.forEach(element => {
         if (element.BeginDateTime === label.BeginDateTime && element.EndDateTime === label.EndDateTime && element.WorkNodeNo === dataset.label) {
           // console.log(typeof element.OutputQty, typeof element.BadQty)
-          const output = element.OutputQty
-          dataset.data.push(output)
+          const output = element.OutputQty;
+          dataset.data.push(output);
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
   const storeColor = [
     'rgba(255,164,91,1)',
@@ -76,16 +76,16 @@ export function NodesOutput(data) {
     'rgba(152,172,248,1)',
     'rgba(176,136,249,1)',
     'rgba(218,159,249,1)'
-  ]
+  ];
 
   if (result.datasets.length > 0) {
     result.datasets.forEach((dataset, index) => {
-      const color = storeColor[index] || 'rgba(255, 255, 255, 1)'
-      dataset.borderColor = color
-      dataset.strokeColor = color
-      dataset.pointBackgroundColor = color
-    })
+      const color = storeColor[index] || 'rgba(255, 255, 255, 1)';
+      dataset.borderColor = color;
+      dataset.strokeColor = color;
+      dataset.pointBackgroundColor = color;
+    });
   }
 
-  return result
+  return result;
 }

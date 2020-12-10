@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import PieChart from '@/components/charts/PieChart/PieChart.js'
+import PieChart from '@/components/charts/PieChart/PieChart.js';
 
 export default {
   name: 'PieChartC',
@@ -35,7 +35,7 @@ export default {
         return {
           labels: [],
           datasets: []
-        }
+        };
       }
     }
   },
@@ -61,30 +61,30 @@ export default {
               size: 16
             },
             formatter: (value, context) => {
-              return `${value} %`
+              return `${value} %`;
             }
           }
         }
       }
-    }
+    };
   },
   watch: {
     data: {
       handler(value) {
-        this.fillData()
+        this.fillData();
       },
       deep: true
     }
   },
   created() {
-    this.fillData()
+    this.fillData();
   },
   methods: {
     fillData() {
-      this.datacollection = this.data
+      this.datacollection = this.data;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

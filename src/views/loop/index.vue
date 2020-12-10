@@ -16,7 +16,7 @@
           </b-input-group>
         </b-col>
       </b-row>
-      <b-row class="mb-2">
+      <!-- <b-row class="mb-2">
         <b-col cols="12" sm="6">
           <b-input-group size="md" :prepend="$t('loop.Begin_Node')">
             <b-form-select v-model="WorkNodesFilters.bWorkNodeNo" :options="workNodeListOptions" />
@@ -27,7 +27,7 @@
             <b-form-select v-model="WorkNodesFilters.eWorkNodeNo" :options="workNodeListOptions" />
           </b-input-group>
         </b-col>
-      </b-row>
+      </b-row> -->
       <b-row class="mb-2">
         <b-col cols="12" sm="6">
           <b-input-group size="md" :prepend="$t('loop.Timespan')">
@@ -52,12 +52,12 @@
 </template>
 
 <script>
-import { GetLoop } from '@/api/SelectData'
-import { GetLoopProgressRate, GetLoopFisrtWorkNode, GetLoopLastWorkNode, GetWorkNodesInterval } from '@/api/ProgressRate'
-import { mapGetters } from 'vuex'
-import DateTimeRange from '@/components/DateTimeRange'
-import LineChartComponent from '@/components/charts/LineChart/LineChart.vue'
-import { loopProgressRateToLineChart } from '@/utils/loopProgressRate'
+import { GetLoop } from '@/api/SelectData';
+import { GetLoopProgressRate, GetLoopFisrtWorkNode, GetLoopLastWorkNode, GetWorkNodesInterval } from '@/api/ProgressRate';
+import { mapGetters } from 'vuex';
+import DateTimeRange from '@/components/DateTimeRange';
+import LineChartComponent from '@/components/charts/LineChart/LineChart.vue';
+import { loopProgressRateToLineChart } from '@/utils/loopProgressRate';
 
 export default {
   name: 'Loop',
@@ -90,7 +90,7 @@ export default {
       },
 
       loopDetailData: []
-    }
+    };
   },
   computed: {
     ...mapGetters([
@@ -99,14 +99,14 @@ export default {
       'language'
     ]),
     loopListOptions() {
-      const list = this.loopList
-      let options = []
+      const list = this.loopList;
+      let options = [];
 
       if (!this.query.asNo) {
         return [{
           value: '',
           text: this.$t('loop.Enter_AsNo')
-        }]
+        }];
       }
 
       if (this.loopList.length > 0) {
@@ -114,81 +114,81 @@ export default {
           return {
             value: item.LoopNum,
             text: `${this.$t('loop.LoopNum')}${item.LoopNum}`
-          }
-        })
+          };
+        });
 
         options = [{
           value: '',
           text: this.$t('loop.Select_LoopNum')
-        }, ..._list]
+        }, ..._list];
       } else {
         options = [{
           value: '',
           text: this.$t('loop.None_LoopNum')
-        }]
+        }];
       }
 
-      return options
+      return options;
     },
     timeTablesList() {
       const list = this.time_tables.map(item => {
         return {
           value: item.TimeTableNo,
           text: item.TimeTableNo
-        }
-      })
+        };
+      });
 
-      return [{ value: '', text: this.$t('loop.Select_Timespan') }, ...list]
+      return [{ value: '', text: this.$t('loop.Select_Timespan') }, ...list];
     },
     workNodeListOptions() {
-      let list = this.work_node
+      let list = this.work_node;
 
       list = list.sort((a, b) => {
-        return a.WorkSort - b.WorkSort
-      })
+        return a.WorkSort - b.WorkSort;
+      });
 
       const options = list.map(element => {
         return {
           value: element.WorkNodeNo,
           text: element.WorkNodeNo
-        }
-      })
+        };
+      });
 
       return [{
         value: '',
         text: this.$t('loop.Select_Node')
-      }, ...options]
+      }, ...options];
     },
     loopProgressRate() {
-      const result = loopProgressRateToLineChart(this.loopDetailData)
-      return result
+      const result = loopProgressRateToLineChart(this.loopDetailData);
+      return result;
     },
     LangNo() {
-      const language = this.language
-      let res = ''
+      const language = this.language;
+      let res = '';
 
       switch (language) {
         case 'en':
-          res = '02'
-          break
+          res = '02';
+          break;
         case 'vi':
-          res = '03'
-          break
+          res = '03';
+          break;
         case 'th':
-          res = '04'
-          break
+          res = '04';
+          break;
         case 'zh_cn':
-          res = '01'
-          break
+          res = '01';
+          break;
         case 'zh_tw':
-          res = '01'
-          break
+          res = '01';
+          break;
         default:
-          res = '01'
-          break
+          res = '01';
+          break;
       }
 
-      return res
+      return res;
     }
   },
   watch: {
@@ -198,10 +198,10 @@ export default {
           comNo: this.query.comNo,
           asNo: this.query.asNo,
           loopNum: this.selectedLoop
-        }
+        };
 
         if (workNodeQuery.asNo !== '' && workNodeQuery.loopNum !== '') {
-          this.handleWorkNode(workNodeQuery)
+          this.handleWorkNode(workNodeQuery);
         }
       },
       deep: true
@@ -211,32 +211,32 @@ export default {
         comNo: this.query.comNo,
         asNo: this.query.asNo,
         loopNum: this.selectedLoop
-      }
+      };
 
       if (workNodeQuery.asNo !== '' && workNodeQuery.loopNum !== '') {
-        this.handleWorkNode(workNodeQuery)
+        this.handleWorkNode(workNodeQuery);
       }
     }
   },
   created() {
-    this.$store.dispatch('selectData/getTimeTables')
+    this.$store.dispatch('selectData/getTimeTables');
   },
   mounted() {
   },
   methods: {
     async handleGetLoopList() {
-      const data = JSON.stringify(this.query)
+      const data = JSON.stringify(this.query);
 
-      this.selectedLoop = ''
-      this.fetchingLoop = true
+      this.selectedLoop = '';
+      this.fetchingLoop = true;
 
       const result = await GetLoop(data).then(response => response).catch(error => {
-        console.error(error)
-      })
+        console.error(error);
+      });
 
-      this.loopList = result
+      this.loopList = result;
 
-      this.fetchingLoop = false
+      this.fetchingLoop = false;
     },
     async handleGetLoopProgressRate() {
       const query = {
@@ -247,43 +247,50 @@ export default {
         EndDateTime: this.dateRange.end,
         TimeTableNo: this.selectedTimeTable,
         LangNo: this.LangNo
-      }
+      };
 
-      // step 1
-      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response)
+      /**
+       * @description 先取得迴路各報工點細節
+       */
+      const _loopDetailData = await GetLoopProgressRate(JSON.stringify(query)).then(response => response);
 
-      // this.loopDetailData = _loopDetailData
+      /**
+       * @description 判斷WorkNodesFilters.modeNo 須回填 0 或 1
+       */
 
-      // step 2
       const queryWorkNodes = {
         ProgressRateViewModels: _loopDetailData,
         WorkNodesFilters: this.WorkNodesFilters
-      }
+      };
 
+      /**
+       * @description 在取得各點之間的生產狀態
+       * @param { ProgressRateViewModels, WorkNodesFilters }
+       */
       GetWorkNodesInterval(JSON.stringify(queryWorkNodes)).then(response => {
-        this.loopDetailData = response
-      })
+        this.loopDetailData = response;
+      });
     },
     handleDateRange(value) {
-      this.dateRange = value
+      this.dateRange = value;
     },
     handleWorkNode(workNodeQuery) {
-      this.$store.dispatch('selectData/getWorkNode', workNodeQuery)
-      this.getLoopFisrtWorkNode(workNodeQuery)
-      this.getLoopLastWorkNode(workNodeQuery)
+      this.$store.dispatch('selectData/getWorkNode', workNodeQuery);
+      this.getLoopFisrtWorkNode(workNodeQuery);
+      this.getLoopLastWorkNode(workNodeQuery);
     },
     getLoopFisrtWorkNode(workNodeQuery) {
       GetLoopFisrtWorkNode(JSON.stringify(workNodeQuery)).then(response => {
-        this.WorkNodesFilters.bWorkNodeNo = response
-      })
+        this.WorkNodesFilters.bWorkNodeNo = response;
+      });
     },
     getLoopLastWorkNode(workNodeQuery) {
       GetLoopLastWorkNode(JSON.stringify(workNodeQuery)).then(response => {
-        this.WorkNodesFilters.eWorkNodeNo = response
-      })
+        this.WorkNodesFilters.eWorkNodeNo = response;
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
