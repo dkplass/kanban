@@ -1,19 +1,19 @@
-'use strict'
-const path = require('path')
-const defaultSettings = require('./src/settings.js')
+'use strict';
+const path = require('path');
+const defaultSettings = require('./src/settings.js');
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.join(__dirname, dir);
 }
 
-const name = defaultSettings.title || 'Kanban' // page title
+const name = defaultSettings.title || 'Kanban'; // page title
 
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 9527; // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -50,7 +50,7 @@ module.exports = {
   },
   transpileDependencies: ['v-calendar'],
   chainWebpack: config => {
-    config.entry('main').add('@babel/polyfill')
+    config.entry('main').add('@babel/polyfill');
     // // it can improve the speed of the first screen, it is recommended to turn on preload
     // // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [
@@ -61,16 +61,16 @@ module.exports = {
         fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
         include: 'initial'
       }
-    ])
+    ]);
 
     // // when there are many pages, it will cause too many meaningless requests
-    config.plugins.delete('prefetch')
+    config.plugins.delete('prefetch');
 
     // // set svg-sprite-loader
     config.module
       .rule('svg')
       .exclude.add(resolve('src/icons'))
-      .end()
+      .end();
     config.module
       .rule('icons')
       .test(/\.svg$/)
@@ -81,7 +81,7 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
-      .end()
+      .end();
 
     // config
     //   .when(process.env.NODE_ENV !== 'development',
@@ -123,4 +123,4 @@ module.exports = {
     //     }
     //   )
   }
-}
+};
